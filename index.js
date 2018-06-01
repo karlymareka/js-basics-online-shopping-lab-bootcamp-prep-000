@@ -18,7 +18,22 @@ function addToCart(itemName) {
 }
 
 function viewCart() {
-  // write your code here
+    if (cart.length === 0) {
+    return ("Your shopping cart is empty.");
+  }
+  else if (cart.length === 1) {
+    return (`In your cart, you have ${cart[0].itemName} at $${cart[0].itemPrice}.`)
+  }
+  else {
+    var finalStatement = "In your cart, you have ";
+    for (var i = 0; i < cart.length - 1; i++) {
+      var addToStatement = `${cart[i].itemName} at $${cart[i].itemPrice}, `;
+      finalStatement = finalStatement.concat(addToStatement);
+    }
+    var lastPartStatement = `and ${cart[cart.length - 1].itemName} at $${cart[cart.length - 1].itemPrice}.`;
+    finalStatement = finalStatement.concat(lastPartStatement);
+    return finalStatement;
+  }
 }
 
 function total() {
